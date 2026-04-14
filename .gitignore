@@ -2,6 +2,7 @@ node_modules/
 data/
 launcher/target/
 StartWordBlaster
+.codex
 .codex/
 *.log
 .DS_Store
