@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WordBlaster 2.0
+Comment=Launch the WordBlaster convoy hunt
+Exec=bash /home/wadiasandbox001/WordBlaster001/launch-wordblaster.sh
+Path=/home/wadiasandbox001/WordBlaster001
+Icon=/home/wadiasandbox001/WordBlaster001/wordblaster-icon.svg
+Terminal=false
+Categories=Game;Education;
+StartupNotify=true

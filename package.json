@@ -1,0 +1,15 @@
+{
+  "name": "wordblaster",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WordBlaster 2.0 is an isometric convoy-hunt browser game with local Kokoro TTS.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/app.js && node --check public/word-bank.js",
+    "launcher:build": "cargo build --manifest-path launcher/Cargo.toml --release"
+  },
+  "dependencies": {
+    "kokoro-js": "^1.2.1"
+  }
+}

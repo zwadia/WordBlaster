@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordBlaster 2.0</title>
+    <link rel="stylesheet" href="./styles.css?v=20260414c" />
+  </head>
+  <body>
+    <div class="terrain-glow"></div>
+    <main class="shell">
+      <header class="hud-bar">
+        <div class="brand-panel">
+          <p class="eyebrow">Version 2.0</p>
+          <h1>WordBlaster: Convoy Hunt</h1>
+          <p class="summary">Pan the isometric battlefield, locate the labeled vehicle, and blast it before the clock runs out.</p>
+        </div>
+
+        <div class="score-strip">
+          <article class="score-card">
+            <span class="stat-label">Score</span>
+            <strong id="scoreValue">0</strong>
+          </article>
+          <article class="score-card">
+            <span class="stat-label">Hits</span>
+            <strong id="hitsValue">0</strong>
+          </article>
+          <article class="score-card">
+            <span class="stat-label">Misses</span>
+            <strong id="missesValue">0</strong>
+          </article>
+          <article class="score-card">
+            <span class="stat-label">Streak</span>
+            <strong id="streakValue">0</strong>
+          </article>
+        </div>
+      </header>
+
+      <section class="mission-bar">
+        <div class="target-panel">
+          <div>
+            <p class="eyebrow">Current Target</p>
+            <h2 id="targetWord">Deploying...</h2>
+            <p class="target-meta" id="targetMeta">Awaiting target assignment</p>
+          </div>
+          <div class="timer-panel">
+            <span class="timer-label">Time Window</span>
+            <strong id="timerValue">20.0s</strong>
+            <div class="timer-track">
+              <div id="timerFill" class="timer-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-strip">
+          <button id="pauseButton" class="secondary">Pause</button>
+          <button id="repeatButton" class="primary">Repeat Target</button>
+          <button id="newPatrolButton" class="secondary">New Patrol</button>
+          <button id="centerButton" class="secondary">Center Map</button>
+          <button id="resetButton" class="secondary danger">Reset Save</button>
+        </div>
+      </section>
+
+      <section class="battle-shell">
+        <div class="battle-header">
+          <div>
+            <p class="eyebrow">Battlefield</p>
+            <h3 id="statusLine">Drag to pan. Click a labeled vehicle to blast it.</h3>
+            <p id="patrolLine" class="patrol-line">Patrol loading...</p>
+          </div>
+          <div class="legend">
+            <span>Tank</span>
+            <span>Humvee</span>
+            <span>Tanker</span>
+            <span>Artillery</span>
+            <span>Launcher</span>
+          </div>
+        </div>
+
+        <div class="canvas-shell">
+          <canvas id="battlefield" aria-label="WordBlaster 2 battlefield"></canvas>
+          <div class="controls-hint">Drag map or use arrow keys to pan</div>
+        </div>
+      </section>
+    </main>
+
+    <template id="toastTemplate">
+      <div class="toast"></div>
+    </template>
+
+    <script type="module" src="./app.js?v=20260414c"></script>
+  </body>
+</html>
