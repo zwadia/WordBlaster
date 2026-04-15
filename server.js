@@ -10,7 +10,8 @@ const __dirname = path.dirname(__filename);
 
 const publicDir = path.join(__dirname, "public");
 const dataDir = path.join(__dirname, "data");
-const saveFile = path.join(dataDir, "savegame-v2.json");
+const saveFile = path.join(dataDir, "savegame.json");
+const legacySaveFile = path.join(dataDir, "savegame-v2.json");
 const ttsCacheDir = path.join(dataDir, "tts-cache");
 
 const port = Number(process.env.PORT || 3000);
@@ -59,20 +60,34 @@ async function getTts() {
   return ttsPromise;
 }
 
-async function loadSave(filePath, defaults) {
+async function readSaveFile(filePath, defaults) {
+  const raw = await fs.readFile(filePath, "utf8");
+  const parsed = JSON.parse(raw);
+  return { ...defaults, ...parsed };
+}
+
+async function loadSave(filePath, defaults, fallbackPaths = []) {
   await ensureDataDirs();
 
   try {
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-    return { ...defaults, ...parsed };
+    return await readSaveFile(filePath, defaults);
   } catch (error) {
-    if (error.code === "ENOENT") {
-      return { ...defaults };
+    if (error.code !== "ENOENT") {
+      throw error;
     }
-
-    throw error;
   }
+
+  for (const fallbackPath of fallbackPaths) {
+    try {
+      return await readSaveFile(fallbackPath, defaults);
+    } catch (error) {
+      if (error.code !== "ENOENT") {
+        throw error;
+      }
+    }
+  }
+
+  return { ...defaults };
 }
 
 async function writeSave(filePath, defaults, nextSave) {
@@ -263,7 +278,7 @@ const server = http.createServer(async (request, response) => {
   }
 
   if (request.method === "GET" && isSaveRoute(requestUrl.pathname)) {
-    const save = await loadSave(saveFile, defaultSave);
+    const save = await loadSave(saveFile, defaultSave, [legacySaveFile]);
     await sendJson(response, 200, save);
     return;
   }

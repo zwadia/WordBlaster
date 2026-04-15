@@ -1,10 +1,10 @@
-# WordBlaster 2.0
+# WordBlaster
 
-WordBlaster 2.0 is a browser game designed to promote reading fluency for young kids. The player pans across an isometric battlefield, listens for a target word, finds the vehicle carrying that label, and blasts it before the timer expires.
+WordBlaster is a browser game designed to promote reading fluency for young kids. The player pans across an isometric battlefield, listens for a target word, finds the vehicle carrying that label, and blasts it before the timer expires.
 
 The goal is not twitch shooting. The goal is visual word recognition under light pressure. The child hears a word, scans a dense field of similar-looking labels, decodes what they are seeing, and then confirms the match by clicking the correct target.
 
-![WordBlaster 2.0 gameplay screenshot](assets/wordblaster-convoy-hunt.png)
+![WordBlaster gameplay screenshot](assets/wordblaster-convoy-hunt.png)
 
 ## What The Game Is Teaching
 
@@ -52,7 +52,7 @@ The timer is currently set to `20` seconds, and totals can go negative.
 
 ## Technical Overview
 
-WordBlaster 2.0 is intentionally simple to run locally:
+WordBlaster is intentionally simple to run locally:
 
 - a static frontend in `public/`
 - a small Node.js server in `server.js`
@@ -150,13 +150,13 @@ Progress is persisted locally, not in browser-only storage.
 
 The current save path is:
 
-- `data/savegame-v2.json`
+- `data/savegame.json`
 
 The frontend talks to:
 
-- `GET /api/v2/save`
-- `POST /api/v2/save`
-- `POST /api/v2/save/reset`
+- `GET /api/save`
+- `POST /api/save`
+- `POST /api/save/reset`
 
 Saved state includes:
 
@@ -234,9 +234,3 @@ cargo build --manifest-path launcher/Cargo.toml --release
 ```
 
 This requires a system C linker such as `cc` or `gcc`.
-
-## Why This Version Exists
-
-Version 2.0 moves away from the earlier static-passage design and turns reading into a spatial search task. The child is no longer just scanning a page of text. They are listening, decoding, navigating, comparing labels, and reacting under a gentle time limit.
-
-That makes the game feel more like play, while still training the exact reading behaviors it is supposed to strengthen.

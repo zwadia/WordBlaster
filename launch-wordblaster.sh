@@ -2,9 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-URL="http://127.0.0.1:3000/?build=20260414c"
+URL="http://127.0.0.1:3000/?build=20260414d"
 HEALTH_URL="http://127.0.0.1:3000/health"
-SAVE_URL="http://127.0.0.1:3000/api/v2/save"
+SAVE_URL="http://127.0.0.1:3000/api/save"
 LOG_DIR="$SCRIPT_DIR/data"
 LOG_FILE="$LOG_DIR/wordblaster-server.log"
 
@@ -28,9 +28,9 @@ fi
 
 if ! server_ready; then
   if command -v zenity >/dev/null 2>&1; then
-    zenity --error --title="WordBlaster 2.0" --text="WordBlaster 2.0 could not start.\nCheck:\n$LOG_FILE"
+    zenity --error --title="WordBlaster" --text="WordBlaster could not start.\nCheck:\n$LOG_FILE"
   else
-    printf 'WordBlaster 2.0 could not start. Check %s\n' "$LOG_FILE" >&2
+    printf 'WordBlaster could not start. Check %s\n' "$LOG_FILE" >&2
   fi
   exit 1
 fi

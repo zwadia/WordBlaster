@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=WordBlaster 2.0
+Name=WordBlaster
 Comment=Launch the WordBlaster convoy hunt
 Exec=bash /home/wadiasandbox001/WordBlaster001/launch-wordblaster.sh
 Path=/home/wadiasandbox001/WordBlaster001

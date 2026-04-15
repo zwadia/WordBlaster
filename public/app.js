@@ -1,7 +1,7 @@
 import { wordBank } from "./word-bank.js";
 
-const SAVE_URL = "/api/v2/save";
-const RESET_URL = "/api/v2/save/reset";
+const SAVE_URL = "/api/save";
+const RESET_URL = "/api/save/reset";
 const TTS_URL = "/api/tts";
 
 const TILE_W = 122;
@@ -2388,8 +2388,8 @@ function bindControls() {
     state.assistRounds = 0;
     applyPatrol(0);
     resetMissionBoard();
-    statusCopy("V2 save reset. Fresh convoy deployed.");
-    showToast("V2 save reset");
+    statusCopy("Save reset. Fresh convoy deployed.");
+    showToast("Save reset");
   });
 
   window.addEventListener("resize", resizeCanvas);
@@ -2414,7 +2414,7 @@ function bindControls() {
   });
 }
 
-function startV2() {
+function startGame() {
   renderPauseButton();
   applyPatrol(0);
   setupVehicles();
@@ -2455,12 +2455,12 @@ async function init() {
   bindCanvas();
   bindControls();
   await loadSave();
-  startV2();
-  showToast("WordBlaster 2.0 ready");
+  startGame();
+  showToast("WordBlaster ready");
   window.requestAnimationFrame(loop);
 }
 
 init().catch((error) => {
   console.error(error);
-  statusCopy("V2 failed to initialize.");
+  statusCopy("WordBlaster failed to initialize.");
 });

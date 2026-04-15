@@ -2,7 +2,7 @@
   "name": "wordblaster",
   "version": "0.1.0",
   "private": true,
-  "description": "WordBlaster 2.0 is an isometric convoy-hunt browser game with local Kokoro TTS.",
+  "description": "WordBlaster is an isometric convoy-hunt browser game with local Kokoro TTS.",
   "type": "module",
   "scripts": {
     "start": "node server.js",
