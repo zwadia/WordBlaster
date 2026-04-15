@@ -234,3 +234,15 @@ cargo build --manifest-path launcher/Cargo.toml --release
 ```
 
 This requires a system C linker such as `cc` or `gcc`.
+
+## License
+
+WordBlaster is licensed under the MIT License. See [LICENSE](LICENSE).
+
+Third-party components used for local text-to-speech remain under their own
+licenses. In particular:
+
+- `kokoro-js` is Apache-2.0
+- `onnx-community/Kokoro-82M-v1.0-ONNX` is Apache-2.0
+
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the current third-party licensing summary.

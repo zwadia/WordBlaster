@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "WordBlaster is an isometric convoy-hunt browser game with local Kokoro TTS.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "node server.js",
